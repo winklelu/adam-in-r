@@ -195,6 +195,49 @@ simulate_dv <- function() {
   )
 }
 
+# --- TR: Tumor results (target/non-target/new lesion measurements, RECIST) ---------
+simulate_tr <- function() {
+  tibble(
+    STUDYID = "STUDY",
+    USUBJID = c(
+      usubjids[1], usubjids[1], usubjids[2], usubjids[2],
+      usubjids[3], usubjids[3], usubjids[4], usubjids[4]
+    ),
+    GRPID = c(
+      "TARGET", "TARGET", "TARGET", "TARGET",
+      "NON-TARGET", "NON-TARGET", "NEW LESION", "NEW LESION"
+    ),
+    TUTESTCD = c(
+      "TUMIDENT", "LDIAM", "TUMIDENT", "LDIAM",
+      "TUMIDENT", "TUMSTATE", "TUMIDENT", "TUMSTATE"
+    ),
+    TRLOC = c(
+      "LIVER", "LIVER", "LUNG", "LUNG",
+      "BONE", "BONE", "LYMPH NODE", "LYMPH NODE"
+    ),
+    TRSTRESN = c(NA, 32, NA, 18, NA, NA, NA, NA),
+    VISIT = rep("WEEK 8", 8)
+  )
+}
+
+# --- RS: Response assessments (overall response per visit) -------------------------
+simulate_rs <- function() {
+  tibble(
+    STUDYID = "STUDY",
+    USUBJID = rep(usubjids[1:4], each = 3),
+    VISIT = rep(c("WEEK 4", "WEEK 8", "WEEK 12"), 4),
+    VISITNUM = rep(c(1, 2, 3), 4),
+    RSTESTCD = "OVRLRESP",
+    RSSTRESC = c(
+      "SD", "PR", "PR",
+      "SD", "SD", "PD",
+      "PR", "CR", "CR",
+      "SD", "PD", "PD"
+    ),
+    RSDTC = rep(c("2024-02-01", "2024-04-01", "2024-06-01"), 4)
+  )
+}
+
 # --- SUPPAE: long-format qualifiers for AE (for transpose demos) -------------------
 simulate_suppae <- function() {
   tibble(

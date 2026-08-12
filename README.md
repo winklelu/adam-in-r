@@ -22,12 +22,15 @@ programmers moving between SAS and R.
 
 The source scenario catalogue this repo translates from is a living,
 Chinese-language reference note the author keeps separately, based on
-real ADaM programs from protocol KX-ORAX-002.
+real ADaM programs from protocols KX-ORAX-002, KX-ORAX-CN-007
+(oncology, RECIST + time-to-event), and KX01-AK003.
 
 ## Requirements
 
 - R (tested with R 4.x)
-- Packages: `dplyr`, `tidyr`, `stringr`, `lubridate`, `purrr`, `tibble`
+- Packages: `dplyr`, `tidyr`, `stringr`, `lubridate`, `purrr`, `tibble`,
+  `readxl`, `writexl` (the latter only to generate the demo workbook in
+  `read_external_excel.R`)
 
 ## Running a scenario
 
@@ -53,6 +56,9 @@ else needs to be set up first.
 | Long → wide transpose (SUPPxx pattern) | [`transpose_long_wide.R`](R/01_sort_merge/transpose_long_wide.R) | `pivot_wider()` |
 | Iterate over & read multiple source domains | [`iterate_read_multiple_domains.R`](R/01_sort_merge/iterate_read_multiple_domains.R) | `purrr::map()` |
 | Remove duplicate records | [`remove_duplicates.R`](R/01_sort_merge/remove_duplicates.R) | `distinct()` |
+| Read an external Excel data source | [`read_external_excel.R`](R/01_sort_merge/read_external_excel.R) | `readxl::read_excel()` |
+| Expand multi-select (checkbox) fields into records | [`expand_multiselect_to_records.R`](R/01_sort_merge/expand_multiselect_to_records.R) | `pivot_longer()` |
+| Link cross-domain records via SDTM RELREC | [`link_relrec_records.R`](R/01_sort_merge/link_relrec_records.R) | `pivot_wider()`, `left_join()` |
 
 ### 02 — Variable Attributes & Column Control
 
@@ -69,6 +75,7 @@ else needs to be set up first.
 | Handle partial (incomplete) dates | [`handle_partial_dates.R`](R/03_date_time/handle_partial_dates.R) | `case_when()`, `str_sub()` |
 | Calculate relative study day | [`calculate_study_day.R`](R/03_date_time/calculate_study_day.R) | Date arithmetic |
 | Calculate datetime differences (PK relative time) | [`calculate_datetime_difference.R`](R/03_date_time/calculate_datetime_difference.R) | `difftime()` |
+| Derive age from birth year only (no full birth date) | [`derive_age_from_birth_year.R`](R/03_date_time/derive_age_from_birth_year.R) | `make_date()`, `case_when()` |
 
 ### 04 — Core ADaM Derivations
 
@@ -83,6 +90,11 @@ else needs to be set up first.
 | Population flags (safety/randomized) | [`population_flags.R`](R/04_adam_core/population_flags.R) | `mutate()`, `if_else()` |
 | Analysis sequence number | [`analysis_sequence_number.R`](R/04_adam_core/analysis_sequence_number.R) | `group_by()`, `row_number()` |
 | Analysis visit windowing | [`analysis_visit_windowing.R`](R/04_adam_core/analysis_visit_windowing.R) | `left_join()` |
+| Detect state-change count (LAG + RETAIN) | [`detect_state_change_count.R`](R/04_adam_core/detect_state_change_count.R) | `lag()`, `cumsum()` |
+| Derive treatment start/end date from exposure records | [`derive_treatment_dates_from_ex.R`](R/04_adam_core/derive_treatment_dates_from_ex.R) | `group_by()`, `summarise()` |
+| Derive a composite score (all components required) | [`derive_composite_score.R`](R/04_adam_core/derive_composite_score.R) | `group_by()`, `summarise()` |
+| Post-baseline max value flag + directional flags | [`derive_postbaseline_max_flag.R`](R/04_adam_core/derive_postbaseline_max_flag.R) | `group_by()`, `mutate()` |
+| Derive numeric grouping (label + numeric code) | [`derive_numeric_group_category.R`](R/04_adam_core/derive_numeric_group_category.R) | `case_when()` |
 
 ### 05 — String & Numeric Handling
 
@@ -91,6 +103,9 @@ else needs to be set up first.
 | String split/concatenate | [`string_split_concatenate.R`](R/05_string_numeric/string_split_concatenate.R) | `str_split_fixed()` |
 | Numeric ↔ character conversion | [`numeric_character_conversion.R`](R/05_string_numeric/numeric_character_conversion.R) | `as.numeric()`, `as.character()` |
 | Aggregate/summarize (PROC SQL aggregate functions) | [`aggregate_summarize.R`](R/05_string_numeric/aggregate_summarize.R) | `group_by()`, `summarise()` |
+| Coalesce multiple source columns by priority | [`coalesce_multiple_sources.R`](R/05_string_numeric/coalesce_multiple_sources.R) | `coalesce()` |
+| Expand a delimited string into records (data-driven) | [`expand_delimited_string_dynamic.R`](R/05_string_numeric/expand_delimited_string_dynamic.R) | `separate_rows()` |
+| Extract/match text with a regular expression | [`extract_regex_pattern.R`](R/05_string_numeric/extract_regex_pattern.R) | `str_remove()`, `str_detect()` |
 
 ### 06 — Validation & Output
 
@@ -98,18 +113,34 @@ else needs to be set up first.
 |---|---|---|
 | Export/iterate output across multiple datasets | [`export_multiple_datasets.R`](R/06_qc_output/export_multiple_datasets.R) | `purrr::iwalk()` |
 | Data validation checks (log-check macro, reinterpreted) | [`data_validation_checks.R`](R/06_qc_output/data_validation_checks.R) | custom assertion function |
+| Inline data validation warning (during derivation) | [`inline_data_validation_check.R`](R/06_qc_output/inline_data_validation_check.R) | custom assertion function |
+
+### 07 — Oncology Response & Time-to-Event
+
+RECIST tumor response and survival-analysis derivations, introduced by
+protocol KX-ORAX-CN-007's ADTR/ADRS/ADTTE domains.
+
+| SAS scenario | R file | Key tidyverse function(s) |
+|---|---|---|
+| RECIST lesion classification → PARAM/PARAMCD | [`recist_lesion_param.R`](R/07_oncology_tte/recist_lesion_param.R) | `case_when()` |
+| Overall response / best overall response | [`best_overall_response.R`](R/07_oncology_tte/best_overall_response.R) | `lead()`, `slice_min()` |
+| Time-to-event (PFS/OS) date + censoring derivation | [`time_to_event_censoring.R`](R/07_oncology_tte/time_to_event_censoring.R) | `pmin()`, `coalesce()` |
 
 ## Scenarios intentionally not translated
 
-Two scenarios from the original SAS catalogue are pure SAS
-project-management conventions with no meaningful R skill to demonstrate,
-so they were left out rather than forced into a file:
+A few scenarios from the original SAS catalogue are pure SAS
+project-management/engineering conventions with no meaningful R skill to
+demonstrate, so they were left out rather than forced into a file:
 
 - **Clearing the WORK library at the top of every program**
   (`proc datasets ... kill;`) — in R this is just a fresh session or
   `rm(list = ls())`.
 - **Log-redirection boilerplate** (`proc printto`) — no R equivalent
   worth demonstrating.
+- **Dynamic macro branching to backfill missing SUPPxx columns**
+  (`%if ... %then %do;` guarding a dummy dataset append) — R's
+  `tibble`/`pivot_wider()` data structures don't have SAS's
+  "column referenced but not present" problem in the first place.
 
 ## Adding a new scenario
 
