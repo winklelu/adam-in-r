@@ -13,6 +13,11 @@ structured loosely like CDISC SDTM domains (DM, EX, AE, CM, VS, QS, SC,
 DS, LB, EG, PC, DV). No real subject-level data is used anywhere in this
 repo.
 
+This is a sister project to
+[`sdtm-in-r`](https://github.com/winklelu/sdtm-in-r), which covers the
+upstream pipeline stage (raw/EDC -> CDISC SDTM). The two repos are
+independent and self-contained; neither sources the other.
+
 ## Why this exists
 
 This project started as a way to demonstrate R proficiency using material
@@ -20,10 +25,11 @@ the author already knows well (production ADaM programming patterns), and
 is intended to be shared more broadly as a small open reference for
 programmers moving between SAS and R.
 
-The source scenario catalogue this repo translates from is a living,
-Chinese-language reference note the author keeps separately, based on
-real ADaM programs from protocols KX-ORAX-002, KX-ORAX-CN-007
-(oncology, RECIST + time-to-event), and KX01-AK003.
+Each scenario reflects a functional pattern that recurs across real-world
+ADaM programming — sorting/merging, date derivation, baseline flags,
+toxicity grading, oncology response and time-to-event derivations, and
+more — generalized here into a standalone, reproducible example with
+fully synthetic data.
 
 ## Requirements
 
@@ -117,8 +123,8 @@ else needs to be set up first.
 
 ### 07 — Oncology Response & Time-to-Event
 
-RECIST tumor response and survival-analysis derivations, introduced by
-protocol KX-ORAX-CN-007's ADTR/ADRS/ADTTE domains.
+RECIST tumor response and survival-analysis derivations, in the style of
+ADTR/ADRS/ADTTE domains from an oncology study.
 
 | SAS scenario | R file | Key tidyverse function(s) |
 |---|---|---|
@@ -150,3 +156,7 @@ demonstrate, so they were left out rather than forced into a file:
 3. If new source data is needed, add a generator to
    `R/00_data/simulate_data.R` rather than hard-coding data inline.
 4. Add a row to the scenario index table above.
+
+## License
+
+[MIT](LICENSE)
