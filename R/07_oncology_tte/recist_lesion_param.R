@@ -2,6 +2,11 @@
 # Scenario: RECIST Lesion Classification -> PARAM/PARAMCD
 # ============================================================
 #
+# Purpose: Tumor lesion records are categorized (target/non-target/new
+# lesion) and tested in different ways (site, diameter, status), and
+# each combination reports under its own PARAM/PARAMCD. This maps each
+# lesion-category-and-test combination to its analysis parameter.
+#
 # --- Original SAS logic --------------------------------------
 # if grpid="TARGET" and tutestcd="TUMIDENT" then do;
 #   paramcd="TSITE"; param="Site of Target Lesion";

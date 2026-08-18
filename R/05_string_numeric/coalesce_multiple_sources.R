@@ -2,6 +2,10 @@
 # Scenario: Coalesce Multiple Source Columns by Priority
 # ============================================================
 #
+# Purpose: A result value can be captured in any of several source
+# columns depending on how it was collected, in a fixed priority order.
+# This picks the first non-missing value across those columns per row.
+#
 # --- Original SAS logic --------------------------------------
 # case when ^missing(a.trstresn) then strip(put(a.trstresn,best.))
 #      when missing(a.trstresn) then coalescec(a.TRSTRESC,a.AVAL_tu)

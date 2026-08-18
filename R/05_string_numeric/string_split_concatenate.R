@@ -2,6 +2,11 @@
 # Scenario: String Split / Concatenate
 # ============================================================
 #
+# Purpose: A disposition term free-text field sometimes packs a main
+# reason and a supplementary detail into one comma-separated string.
+# This splits it into the main reason and (when present) the detail
+# that follows.
+#
 # --- Original SAS logic --------------------------------------
 # DCSREAS1=scan(DSTERM,1,",");
 # if find(DSTERM,",")>0 then DCSREAP1=substr(DSTERM,find(DSTERM,",")+1);

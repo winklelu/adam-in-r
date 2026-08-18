@@ -2,6 +2,12 @@
 # Scenario: Extract/Match Text with a Regular Expression
 # ============================================================
 #
+# Purpose: Some coded terms carry a trailing reference code that needs
+# stripping before use as a label, and some lab results carry a
+# qualifier (">100", "<0.5") that makes them non-numeric. This uses
+# pattern matching to clean the term and to exclude qualified results
+# from numeric conversion.
+#
 # --- Original SAS logic --------------------------------------
 # if prxmatch('/(\/\d+\/)/',CMDECOD) then
 #   ACMDECOD = strip(substr(CMDECOD,1,prxmatch('/(\/\d+\/)/',CMDECOD)-1));

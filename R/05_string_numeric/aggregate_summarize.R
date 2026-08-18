@@ -2,6 +2,10 @@
 # Scenario: Aggregate / Summarize (PROC SQL Aggregate Functions)
 # ============================================================
 #
+# Purpose: QC/reporting often needs a per-subject-per-test frequency
+# count rather than the individual records themselves. This counts how
+# many PK records each subject has per test, ordered for review.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql noprint;
 # create table pc01 as

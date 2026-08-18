@@ -2,6 +2,11 @@
 # Scenario: Derive Numeric Grouping (Category Label + Numeric Code)
 # ============================================================
 #
+# Purpose: Continuous baseline variables (age, lab values, disease
+# burden) are often reported by category rather than raw value. This
+# buckets a continuous value into a labeled group and its matching
+# sort-order numeric code.
+#
 # --- Original SAS logic --------------------------------------
 # if 0 < AAGE < 65 then do; AGEGR1="<65"; AGEGR1N=1; end;
 # else if AAGE >=65 then do; AGEGR1=">=65"; AGEGR1N=2; end;

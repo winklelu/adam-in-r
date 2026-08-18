@@ -2,6 +2,11 @@
 # Scenario: Baseline Flag
 # ============================================================
 #
+# Purpose: Change-from-baseline analyses need one record per subject
+# clearly marked as "baseline". This flags the pre-treatment record
+# (here, the SCREENING visit) that later derivations use as the
+# reference value.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql;
 # create table lb_base as

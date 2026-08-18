@@ -2,6 +2,11 @@
 # Scenario: Data Validation Checks (Log-Check Macro, Reinterpreted)
 # ============================================================
 #
+# Purpose: A dataset needs to be checked against a set of structural
+# expectations (no missing keys, unique sequence numbers, valid dates)
+# before it's trusted downstream. This runs all such checks at once
+# and reports every failure found, not just the first one.
+#
 # --- Original SAS logic --------------------------------------
 # %INCLUDE "&_project.programs\global\zmsaslogcheck.sas";
 # %zmsaslogcheck(logfile=&_project.\programs\prog\&pgmname._log.log,

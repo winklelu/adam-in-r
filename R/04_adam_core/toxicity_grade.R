@@ -2,6 +2,11 @@
 # Scenario: Toxicity Grade Derivation (CTCAE-like)
 # ============================================================
 #
+# Purpose: Safety review grades abnormal lab values by severity, not
+# just by "abnormal/normal". This derives a CTCAE-style toxicity grade
+# by comparing a lab result against multiples of its upper limit of
+# normal.
+#
 # --- Original SAS logic --------------------------------------
 # if PARAMCD in ('ALT','AST') and AVAL~=. then do;
 #   if 1*LBSTNRHI<AVAL<=3*LBSTNRHI then ATOXGR='1';

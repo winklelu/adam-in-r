@@ -2,6 +2,11 @@
 # Scenario: Inline Data Validation Warning (During Derivation)
 # ============================================================
 #
+# Purpose: An "OTHER, please specify" field should never be blank when
+# OTHER was selected - that combination signals incomplete CRF data.
+# This flags those rows with a warning right where the check happens,
+# without stopping the pipeline or producing a separate log.
+#
 # --- Original SAS logic --------------------------------------
 # data _NULL_;
 #   set mhall;

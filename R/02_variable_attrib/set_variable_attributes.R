@@ -2,6 +2,11 @@
 # Scenario: Set Variable Labels/Lengths in One Place (ATTRIB)
 # ============================================================
 #
+# Purpose: ADaM deliverables need a documented label per variable, and
+# that metadata should have one source of truth rather than being
+# re-typed at every derivation step. This centralizes labels in one
+# named list and attaches them to the output columns.
+#
 # --- Original SAS logic --------------------------------------
 # %let adamattr=
 # STUDYID length=$11 label='Study Identifier'

@@ -2,6 +2,10 @@
 # Scenario: Population Flags (Safety / Randomized / PK)
 # ============================================================
 #
+# Purpose: Which analysis population a subject belongs to (safety,
+# randomized, etc.) determines which tables/figures include them. This
+# derives each population flag from its defining eligibility condition.
+#
 # --- Original SAS logic --------------------------------------
 # if rfxstdtc^='' then SAFFL='Y'; else SAFFL='N';
 # if ARMCD in ("ARM A","ARM B") then RANDFL='Y'; else RANDFL='N';

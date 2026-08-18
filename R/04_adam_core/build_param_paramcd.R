@@ -2,6 +2,11 @@
 # Scenario: Build PARAM / PARAMCD
 # ============================================================
 #
+# Purpose: Analysis datasets report results by named parameter
+# (PARAM/PARAMCD), not by the raw xxTESTCD collected on the CRF. This
+# maps each raw test code to its analysis parameter code and
+# human-readable label via a fixed lookup.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql;
 # create table eg1 as

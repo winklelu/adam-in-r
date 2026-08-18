@@ -2,6 +2,11 @@
 # Scenario: Calculate Relative Study Day
 # ============================================================
 #
+# Purpose: ADaM reports subject timelines in study day, not calendar
+# date, counted relative to treatment start with no day zero (the day
+# before TRTSDT is day -1, TRTSDT itself is day 1). This derives that
+# relative day for the end-of-study date.
+#
 # --- Original SAS logic --------------------------------------
 # if eosdt>. and trtsdt>. then EOSDY=EOSDT-TRTSDT+1;
 # ----------------------------------------------------------------

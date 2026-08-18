@@ -2,6 +2,11 @@
 # Scenario: Analysis Visit Windowing
 # ============================================================
 #
+# Purpose: Raw collected VISIT values don't always line up cleanly with
+# the standardized analysis timepoints used for reporting. This maps
+# each raw visit to its analysis visit name and numeric order via a
+# lookup table.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql;
 # create table lb2 as

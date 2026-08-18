@@ -2,6 +2,10 @@
 # Scenario: Analysis Sequence Number
 # ============================================================
 #
+# Purpose: ADaM records need a per-subject sequence number (ASEQ) that
+# uniquely orders each subject's records, e.g. by event date. This
+# derives that running 1, 2, 3, ... counter within each subject.
+#
 # --- Original SAS logic --------------------------------------
 # data ecog2; set ecog1;
 #   by STUDYID USUBJID ECOGDTC VISITNUM;

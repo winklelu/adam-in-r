@@ -2,6 +2,11 @@
 # Scenario: Numeric / Character Conversion
 # ============================================================
 #
+# Purpose: ADaM keeps both a numeric analysis value (AVAL) and its
+# character display form (AVALC), derived from a raw character result
+# that isn't always a valid number. This converts the raw result to
+# numeric where possible, and back to its character form.
+#
 # --- Original SAS logic --------------------------------------
 # AVAL=input(dastresc,best.);
 # AVALC=compress(put(AVAL,best.));

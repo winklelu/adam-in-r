@@ -2,6 +2,11 @@
 # Scenario: Detect State-Change Count (LAG + RETAIN)
 # ============================================================
 #
+# Purpose: A subject can have multiple dosing-interruption episodes,
+# but each episode should be counted once, not once per interrupted
+# interval within it. This counts distinct episodes by detecting when
+# the interruption ID changes from the previous row.
+#
 # --- Original SAS logic --------------------------------------
 # data adex_interruption_2;
 #   set adex_interruption_1;

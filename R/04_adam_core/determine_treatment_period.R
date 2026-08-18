@@ -2,6 +2,11 @@
 # Scenario: Determine Treatment Period for an Event
 # ============================================================
 #
+# Purpose: In a crossover/multi-period design, an AE needs to be
+# attributed to the period it occurred in, not just to the subject.
+# This assigns each event to Period 1 or Period 2 by comparing its
+# date to the subject's period-2 start date.
+#
 # --- Original SAS logic --------------------------------------
 # if TR02SDT > input(substr(AESTDTC,1,10),yymmdd10.) then TRTGR1=TRT01A;
 # else TRTGR1=TRT02A;

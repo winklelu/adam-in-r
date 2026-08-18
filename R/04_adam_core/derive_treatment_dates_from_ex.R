@@ -2,6 +2,11 @@
 # Scenario: Derive Treatment Start/End Date from Exposure Records
 # ============================================================
 #
+# Purpose: DM's reference dates (RFXSTDTC/RFXENDTC) aren't always
+# trusted as-is. This derives treatment start/end directly from a
+# subject's own dosing (EX) records - the earliest and latest exposure
+# date - plus a count of dosing records.
+#
 # --- Original SAS logic --------------------------------------
 # data EX_ST; set EX; by usubjid; if first.usubjid;
 #   TRTSDT=EXSTDTC_date_num; run;

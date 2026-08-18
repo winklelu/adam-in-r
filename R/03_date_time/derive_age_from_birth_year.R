@@ -2,6 +2,11 @@
 # Scenario: Derive Age from Birth Year Only (No Full Birth Date)
 # ============================================================
 #
+# Purpose: Some source systems capture only a subject's birth year, not
+# a full birth date, so age can't always be computed the same way. This
+# derives age from a placeholder date when only the year is known, and
+# falls back to the pre-derived AGE value when neither is usable.
+#
 # --- Original SAS logic --------------------------------------
 # if cmiss(RFICDT, BRTHYEAR) > 0 then AAGE=AGE;
 # else AAGE=INT((RFICDT - input(compress(cat("01","JUL",BRTHYEAR)),date9.))/365.25);

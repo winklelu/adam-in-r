@@ -2,6 +2,11 @@
 # Scenario: Calculate Datetime Differences (PK Relative Time)
 # ============================================================
 #
+# Purpose: PK sample timing is analyzed relative to a reference time
+# point (e.g. dose time), not as an absolute clock time. This derives
+# the elapsed hours between a sample's collection datetime and its
+# reference datetime.
+#
 # --- Original SAS logic --------------------------------------
 # if PCDTC_~=. and ATPTREF_~=. then
 #   ARELTM=round(((PCDTC_-ATPTREF_)/3600),0.01);

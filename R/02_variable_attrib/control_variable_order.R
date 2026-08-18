@@ -2,6 +2,11 @@
 # Scenario: Control Output Variable Order (RETAIN)
 # ============================================================
 #
+# Purpose: A dataset's columns can end up in an arbitrary order after
+# merges/derivations, but ADaM output needs key identifier columns
+# first. This reorders columns to a specified layout without changing
+# any values.
+#
 # --- Original SAS logic --------------------------------------
 # data ae;
 #   retain STUDYID USUBJID AESEQ AETERM AEDECOD AESTDTC AEENDTC;

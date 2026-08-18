@@ -2,6 +2,11 @@
 # Scenario: Post-Baseline Max Value Flag + Directional Flags
 # ============================================================
 #
+# Purpose: Safety review often focuses on each subject's worst
+# post-baseline value. This flags the record matching each subject's
+# post-baseline maximum, and marks whether that peak rose above or
+# stayed at/below their baseline.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql noprint;
 #   create table SR_posmax as select usubjid, paramcd, max(AVAL) as AVAL_posmax

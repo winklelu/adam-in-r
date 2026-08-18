@@ -2,6 +2,12 @@
 # Scenario: Time-to-Event (PFS/OS) Date + Censoring Derivation
 # ============================================================
 #
+# Purpose: Survival analysis needs one event/censor date per subject
+# per endpoint (PFS, OS), picked from whichever candidate date applies
+# (progression, death, last known alive) and flagged as an event or a
+# censoring. This derives that date and its censoring status for both
+# endpoints.
+#
 # --- Original SAS logic --------------------------------------
 # case when a.paramcd="PFS" and nmiss(b.trdt,a.dthdt,d.cmstdt)<3
 #        then min(b.trdt,a.dthdt,d.cmstdt)

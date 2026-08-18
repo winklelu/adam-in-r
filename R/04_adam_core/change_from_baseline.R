@@ -2,6 +2,11 @@
 # Scenario: Change from Baseline
 # ============================================================
 #
+# Purpose: A core efficacy/safety metric is how much a value moved from
+# its baseline. This carries each subject's baseline value onto every
+# one of their records, then derives the change from baseline at each
+# post-baseline visit.
+#
 # --- Original SAS logic --------------------------------------
 # if ABLFL='Y' then BASE=AVAL;
 # ...

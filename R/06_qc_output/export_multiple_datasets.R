@@ -2,6 +2,11 @@
 # Scenario: Export/Iterate Output Across Multiple Datasets
 # ============================================================
 #
+# Purpose: A study deliverable is several ADaM domains, each written to
+# its own output file the same way. This exports every domain in a
+# list to its own file in one call, instead of repeating an export
+# step once per domain.
+#
 # --- Original SAS logic --------------------------------------
 # %macro adamtoxpt(domain=);
 #   libname xptout xport "&_project.\output\&domain..xpt";

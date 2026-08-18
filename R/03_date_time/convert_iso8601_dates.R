@@ -2,6 +2,11 @@
 # Scenario: Convert ISO 8601 Strings to Dates
 # ============================================================
 #
+# Purpose: SDTM date/time variables are stored as ISO 8601 character
+# strings, but ADaM derivations (study day, duration, comparisons)
+# need real Date/datetime objects. This parses the character values
+# into proper dates.
+#
 # --- Original SAS logic --------------------------------------
 # if rfxstdtc^="" then TRTSDT=input(scan(rfxstdtc,1,'T'),yymmdd10.);
 # if rfxstdtc^="" then TRTSDTM=input(rfxstdtc,is8601dt.);

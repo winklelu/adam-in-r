@@ -2,6 +2,11 @@
 # Scenario: Handle Partial (Incomplete) Dates
 # ============================================================
 #
+# Purpose: A subject-reported date can be incomplete (year-month or
+# year only) when they can't recall the exact day. This derives a
+# treatment-emergent flag that compares whatever precision is
+# available instead of requiring a full date.
+#
 # --- Original SAS logic --------------------------------------
 # if length(AESTDTC)>10 and TRTSDT<=input(substr(AESTDTC,1,10),yymmdd10.)
 #   then TRTEMFL="Y";

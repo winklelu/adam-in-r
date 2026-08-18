@@ -2,6 +2,11 @@
 # Scenario: Treatment-Emergent Flag
 # ============================================================
 #
+# Purpose: Safety summaries typically report only events that emerged
+# after treatment started, not pre-existing conditions. This flags
+# each AE as treatment-emergent by comparing its onset date to the
+# subject's treatment start date.
+#
 # --- Original SAS logic --------------------------------------
 # if AESTDTC >= TRTSDT then TRTEMFL="Y";
 # else TRTEMFL="N";

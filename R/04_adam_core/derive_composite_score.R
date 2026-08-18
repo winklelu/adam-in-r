@@ -2,6 +2,11 @@
 # Scenario: Derive a Composite Score (Sum of Components, All Required)
 # ============================================================
 #
+# Purpose: A composite endpoint is only valid if every one of its
+# components was measured - a partial sum would misrepresent severity.
+# This sums the components per subject/visit and sets the composite to
+# missing whenever any component is missing.
+#
 # --- Original SAS logic --------------------------------------
 # if first.visitnum then do;
 #   if ^missing(AVAL) then do; count=1; AVAL_sum=AVAL; end;

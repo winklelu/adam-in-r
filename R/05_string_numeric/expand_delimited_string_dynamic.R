@@ -2,6 +2,11 @@
 # Scenario: Expand a Delimited String into Multiple Records (Data-Driven)
 # ============================================================
 #
+# Purpose: A free-text field holds a variable, unknown-in-advance
+# number of comma-separated codes per subject. This splits each row's
+# delimited string into one record per code, regardless of how many
+# codes any given row has.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql noprint;
 #   select max(count(scorres_new2,",")+1) into :m_num from sc_1;

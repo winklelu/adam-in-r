@@ -2,6 +2,11 @@
 # Scenario: Overall Response / Best Overall Response
 # ============================================================
 #
+# Purpose: Oncology efficacy is summarized by each subject's best
+# confirmed tumor response across the whole study, not any single
+# visit's result. This ranks responses from best to worst, keeps only
+# ones confirmed by the next assessment, and takes each subject's best.
+#
 # --- Original SAS logic --------------------------------------
 # select a.*, b.rsorres as rsorres_T1, ...,
 #   case when a.RSTESTCD="OVRLRESP" and b.RSSTRESC="SD" and c.RSSTRESC="PD"
