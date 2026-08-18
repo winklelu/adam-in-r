@@ -2,6 +2,11 @@
 # Scenario: Iterate Over and Read Multiple Source Domains
 # ============================================================
 #
+# Purpose: A study has many SDTM domains (DM, EX, AE, CM, ...) that all
+# need to be pulled from a source library the same way. Rather than
+# repeating the same read step once per domain, this loops over the
+# list of domain names and applies one read step to each.
+#
 # --- Original SAS logic --------------------------------------
 # proc copy in=sdtm out=work;
 #   select dm ex ae cm vs qs sc pc dv;

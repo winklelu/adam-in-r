@@ -2,6 +2,11 @@
 # Scenario: Read an External Excel Data Source
 # ============================================================
 #
+# Purpose: Vendor or central-reading data often arrives as an Excel
+# workbook rather than a SAS/analysis dataset. This reads a specific
+# named sheet into a tibble and drops rows missing the value needed
+# downstream, instead of relying on a LIBNAME engine.
+#
 # --- Original SAS logic --------------------------------------
 # options validvarname=V7;
 # libname test xlsx "&_project.data\external data\..._Reviewer Result.xlsx";

@@ -2,6 +2,10 @@
 # Scenario: Sort a Dataset by Key Variables
 # ============================================================
 #
+# Purpose: Downstream steps (by-group processing, first/last-record
+# logic) depend on rows being in a specific key order. This puts the
+# dataset into that order before anything else runs.
+#
 # --- Original SAS logic --------------------------------------
 # proc sort data=SUPPAE; by USUBJID AESEQ; run;
 # ----------------------------------------------------------------

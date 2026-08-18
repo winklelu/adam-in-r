@@ -2,6 +2,11 @@
 # Scenario: Link Cross-Domain Records via SDTM RELREC
 # ============================================================
 #
+# Purpose: Two records in different domains (e.g. a CE and its related
+# AE) can be linked without sharing a key column - RELREC records the
+# link instead. This reshapes RELREC into a usable key and joins the
+# linked domains together so fields like AETERM land on the CE record.
+#
 # --- Original SAS logic --------------------------------------
 # data relrec_AECE;
 #   set sdtm.relrec(where=(RDOMAIN in ("CE","AE")));

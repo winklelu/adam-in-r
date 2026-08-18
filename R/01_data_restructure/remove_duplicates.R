@@ -2,6 +2,10 @@
 # Scenario: Remove Duplicate Records
 # ============================================================
 #
+# Purpose: An upstream step can introduce exact duplicate rows (e.g.
+# from a re-run or a faulty append). This keeps one copy of each
+# unique row so downstream logic doesn't double-count records.
+#
 # --- Original SAS logic --------------------------------------
 # proc sort data=ae1 out=ae2 nodupkey;
 #   by _all_;

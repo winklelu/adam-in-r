@@ -2,6 +2,11 @@
 # Scenario: Expand Multi-Select (Checkbox) Fields into Records
 # ============================================================
 #
+# Purpose: A CRF checkbox field stores multiple selections in one row
+# using numbered "slot" columns (MHLOC1..MHLOC9). This turns each
+# non-missing slot into its own record so the dataset has one row per
+# selected value, matching the one-value-per-row shape SDTM expects.
+#
 # --- Original SAS logic --------------------------------------
 # if MHLOC="MULTIPLE" then do;
 #   if ^missing(MHLOC1) then do; MHLOC=MHLOC1; output; end;
@@ -27,6 +32,7 @@ mh_wide <- tibble::tibble(
   MHLOC2 = c(NA, "BONE", NA),
   MHLOC3 = c(NA, "LYMPH NODE", NA)
 )
+
 
 # 2. R (tidyverse) equivalent ----------------------------------------
 # SAS repeats the same "if slot is non-missing then output" block once

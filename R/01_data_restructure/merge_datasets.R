@@ -2,6 +2,10 @@
 # Scenario: Merge Two Datasets by Key
 # ============================================================
 #
+# Purpose: Two datasets share a key (USUBJID/CMSEQ) but hold different
+# columns. This combines them into one row per key, attaching the
+# extra columns without duplicating or dropping any records.
+#
 # --- Original SAS logic --------------------------------------
 # data CM2;
 #   merge CM1 SUPPCM1;

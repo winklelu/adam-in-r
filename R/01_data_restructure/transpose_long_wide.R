@@ -2,6 +2,11 @@
 # Scenario: Transpose Long Data to Wide (SUPPxx Pattern)
 # ============================================================
 #
+# Purpose: A SUPPxx table stores one qualifier per row (QNAM/QVAL).
+# Downstream merges expect one row per subject/record with each
+# qualifier as its own column, so this reshapes long to wide before
+# joining SUPPxx data back onto its parent domain.
+#
 # --- Original SAS logic --------------------------------------
 # proc transpose data=SUPPAE out=SUPPAE1;
 #   by USUBJID AESEQ;

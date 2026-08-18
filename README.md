@@ -52,19 +52,19 @@ else needs to be set up first.
 
 ## Scenario index
 
-### 01 — Sort, Merge & Reshape
+### 01 — Data Restructuring (Sort, Merge & Reshape)
 
 | SAS scenario | R file | Key tidyverse function(s) |
 |---|---|---|
-| Sort a dataset by key variables | [`sort_data.R`](R/01_sort_merge/sort_data.R) | `arrange()` |
-| Merge two datasets by key | [`merge_datasets.R`](R/01_sort_merge/merge_datasets.R) | `left_join()` |
-| SQL-style join with grouped subquery | [`sql_join_subquery.R`](R/01_sort_merge/sql_join_subquery.R) | `group_by()`, `filter()` |
-| Long → wide transpose (SUPPxx pattern) | [`transpose_long_wide.R`](R/01_sort_merge/transpose_long_wide.R) | `pivot_wider()` |
-| Iterate over & read multiple source domains | [`iterate_read_multiple_domains.R`](R/01_sort_merge/iterate_read_multiple_domains.R) | `purrr::map()` |
-| Remove duplicate records | [`remove_duplicates.R`](R/01_sort_merge/remove_duplicates.R) | `distinct()` |
-| Read an external Excel data source | [`read_external_excel.R`](R/01_sort_merge/read_external_excel.R) | `readxl::read_excel()` |
-| Expand multi-select (checkbox) fields into records | [`expand_multiselect_to_records.R`](R/01_sort_merge/expand_multiselect_to_records.R) | `pivot_longer()` |
-| Link cross-domain records via SDTM RELREC | [`link_relrec_records.R`](R/01_sort_merge/link_relrec_records.R) | `pivot_wider()`, `left_join()` |
+| Sort a dataset by key variables | [`sort_data.R`](R/01_data_restructure/sort_data.R) | `arrange()` |
+| Merge two datasets by key | [`merge_datasets.R`](R/01_data_restructure/merge_datasets.R) | `left_join()` |
+| SQL-style join with grouped subquery | [`sql_join_subquery.R`](R/01_data_restructure/sql_join_subquery.R) | `group_by()`, `filter()` |
+| Long → wide transpose (SUPPxx pattern) | [`transpose_long_wide.R`](R/01_data_restructure/transpose_long_wide.R) | `pivot_wider()` |
+| Iterate over & read multiple source domains | [`iterate_read_multiple_domains.R`](R/01_data_restructure/iterate_read_multiple_domains.R) | `purrr::map()` |
+| Remove duplicate records | [`remove_duplicates.R`](R/01_data_restructure/remove_duplicates.R) | `distinct()` |
+| Read an external Excel data source | [`read_external_excel.R`](R/01_data_restructure/read_external_excel.R) | `readxl::read_excel()` |
+| Expand multi-select (checkbox) fields into records | [`expand_multiselect_to_records.R`](R/01_data_restructure/expand_multiselect_to_records.R) | `pivot_longer()` |
+| Link cross-domain records via SDTM RELREC | [`link_relrec_records.R`](R/01_data_restructure/link_relrec_records.R) | `pivot_wider()`, `left_join()` |
 
 ### 02 — Variable Attributes & Column Control
 

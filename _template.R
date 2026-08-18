@@ -9,7 +9,7 @@
 library(dplyr)
 # add other tidyverse packages as needed (tidyr, stringr, lubridate, purrr)
 
-# Run scripts from the project root (e.g. Rscript R/01_sort_merge/sort_data.R)
+# Run scripts from the project root (e.g. Rscript R/01_data_restructure/sort_data.R)
 source("R/00_data/simulate_data.R")
 
 # 1. Prepare data --------------------------------------------------

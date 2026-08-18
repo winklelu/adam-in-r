@@ -2,6 +2,11 @@
 # Scenario: SQL-Style Join with Grouped Subquery
 # ============================================================
 #
+# Purpose: Need the first treatment-epoch exposure record per subject
+# (e.g. to derive treatment start date). This filters to the relevant
+# rows, groups by subject, and keeps only the row matching each
+# subject's earliest date.
+#
 # --- Original SAS logic --------------------------------------
 # proc sql;
 # create table tr01st as

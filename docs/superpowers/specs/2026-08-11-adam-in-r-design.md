@@ -49,7 +49,7 @@ adam-in-r/
 ├── docs/superpowers/specs/2026-08-11-adam-in-r-design.md
 └── R/
     ├── 00_data/simulate_data.R
-    ├── 01_sort_merge/            (6 scenarios)
+    ├── 01_data_restructure/            (6 scenarios)
     ├── 02_variable_attrib/       (2 scenarios)
     ├── 03_date_time/             (4 scenarios)
     ├── 04_adam_core/             (9 scenarios)
@@ -64,7 +64,7 @@ file is self-contained and runnable on its own
 
 ### Scenario list (SAS concept → R file)
 
-**01_sort_merge**
+**01_data_restructure**
 1. Sort a dataset by key variables → `sort_data.R`
 2. Merge two datasets by key → `merge_datasets.R`
 3. SQL-style join / subquery with aggregation → `sql_join_subquery.R`
